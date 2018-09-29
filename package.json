@@ -11,14 +11,21 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onLanguage:haskell",
+        "onLanguage:literate haskell"
     ],
-    "main": "./extension",
+    "main": "extension.js",
     "contributes": {
         "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }]
+            "command": "extension.pointfree",
+            "title": "Pointfree"
+        }],
+        "menus": {
+            "editor/context": [{
+                "when": "editorHasSelection",
+                "command": "extension.pointfree"
+            }]
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
